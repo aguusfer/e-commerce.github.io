@@ -15,6 +15,8 @@ function loadCategories(){
 
 document.addEventListener('DOMContentLoaded', ()=> {
 
+    let user = localStorage.getItem('email');
+
     //Si seteamos el usuario en el localStorage se cargan las categorías
     if(user === null) {
         alert('Para navegar por nuestro sitio debes iniciar sesión');

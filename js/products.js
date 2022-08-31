@@ -2,10 +2,6 @@ let autos = [];
 let autosArray = [];
 let AUTOS_URL = "https://japceibal.github.io/emercado-api/cats_products/101.json";
 
-function setAutoID(id) {
-    localStorage.setItem("catID", id);
-}
-
 function listaAutos(){
 
     let htmlContentToAppend = "";
@@ -13,7 +9,6 @@ function listaAutos(){
         let auto = autosArray[i];
 
             htmlContentToAppend += `
-            <div onclick="setAutoID(${auto.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${auto.image}" class="img-thumbnail">
@@ -26,12 +21,12 @@ function listaAutos(){
                     <p class="mb-1">${auto.description}</p>
                     </div>
                 </div>
-            </div>
             `
         }
 
         document.getElementById("product-list-container").innerHTML = htmlContentToAppend;
 }
+
 
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(AUTOS_URL).then(function(resultObj){

@@ -41,7 +41,9 @@ function listaProductos(productosArray){
 
         //verifico si cumple condicion de precioMin y precioMax
         //si se encuentra entre esos valores lo agrego
-        if( ((precioMin == undefined) || ((precioMin != undefined) && (product.cost >= precioMin))) && ((precioMax == undefined) || ((precioMax != undefined) && (product.cost <= precioMax)))) {
+        //si precioMin o Max son vacíos, la evaluacion con el costo del producto va a dar false
+        //y no es necesario evaluar el caso en que estén indefinidos
+        if(!(product.cost<parseInt(precioMin)) && !(product.cost>parseInt(precioMax))) {
             htmlContentToAppend += `
                 <div class="row">
                     <div class="col-3">
@@ -92,21 +94,6 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById('filtrarPrecio').addEventListener('click', ()=> {
         precioMin = document.getElementById('precioMin').value;
         precioMax = document.getElementById('precioMax').value;
-
-        if ((precioMin != undefined) && (precioMin != "") && (parseInt(precioMin)) >= 0){
-            //es necesario pasar a int porque el input recibe texto
-            precioMin = parseInt(precioMin);
-        }
-        else{
-            precioMin = undefined;
-        }
-
-        if ((precioMax != undefined) && (precioMax != "") && (parseInt(precioMax)) >= 0){
-            precioMax = parseInt(precioMax);
-        }
-        else{
-            precioMax = undefined;
-        }
 
         listaProductos(productos);
     })

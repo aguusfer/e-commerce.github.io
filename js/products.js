@@ -5,6 +5,11 @@ let idCat = localStorage.getItem('catID');
 //Obtenemos 101 en caso de autos, 102 si son juguetes, 103 muebles, 104 herramientas, hasta 109
 let PRODUCTOS_URL = "https://japceibal.github.io/emercado-api/cats_products/" + idCat + ".json";
 
+function setProductID(id) {
+    localStorage.setItem("id", id);
+    window.location = "product-info.html"
+}
+
 function ordenarMenorAMayor(productosArray){
     let arrayRetornar = productosArray;
     arrayRetornar.sort(function(a, b) {
@@ -45,6 +50,7 @@ function listaProductos(productosArray){
         //y no es necesario evaluar el caso en que estén indefinidos
         if(!(product.cost<parseInt(precioMin)) && !(product.cost>parseInt(precioMax))) {
             htmlContentToAppend += `
+            <div onclick="setProductID(${product.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${product.image}" class="img-thumbnail">
@@ -57,6 +63,7 @@ function listaProductos(productosArray){
                     <p class="mb-1">${product.description}</p>
                     </div>
                 </div>
+            </div>
             `
         }
     }

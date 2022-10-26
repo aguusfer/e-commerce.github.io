@@ -32,17 +32,79 @@
           <li class="nav-item">
             <a class="nav-link active" id="user"></a>
           </li>
-          <button id="cerrar">Cerrar sesión</button>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+    <div class="p-4">
+      <h2 class="text-center">Carrito de compras</h2>
     </div>
+
+    <!-- aca va la lista de elementos a comprar -->
+    <div class="container">
+      <p class="lead text-left">Artículos a comprar</p>
+      <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Costo</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="carrito">
+          <ul class="list-group">
+
+          </ul>
+        </tbody>
+      </table>
+    </div>
+    <hr>
+    </div>
+
+    <br>
+
+    <!-- tipo de envio -->
+    <div class="container">
+      <p class="lead text-left">Tipo de envío</p>
+      <div>
+        <div>
+          <input type="radio" id="premium" name="envio" value="premium" checked>
+          <label for="premium">Premium 2 a 5 días (15%)</label>
+        </div>
+        <div>
+          <input type="radio" id="express" name="envio" value="express">
+          <label for="express">Express 5 a 8 días (7%)</label>
+        </div>
+        <div>
+          <input type="radio" id="standard" name="envio" value="standard">
+          <label for="standard">Standard 12 a 15 días (5%)</label>
+        </div>
+      </div>
+      <br>
+      <p class="lead text-left">Dirección de envío</p>
+      <div>
+        <div class="row">
+          <label for="calle" class="form-label">Calle</label>
+          <div class="col-6">
+            <input class="form-control" type="text" name="calle" id="calle">
+          </div>
+          <label for="numeroPuerta" class="form-label">Número</label>
+          <div class="col-4">
+            <input class="form-control" type="text" name="numeroPuerta" id="numeroPuerta">
+          </div>
+          <label for="esquina" class="form-label">Esquina</label>
+          <div class="col-6">
+            <input class="form-control" type="text" name="esquina" id="esquina">
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+    
   </main>
   <footer class="text-muted">
     <div class="container">

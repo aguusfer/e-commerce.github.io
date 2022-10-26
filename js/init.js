@@ -40,30 +40,40 @@ let getJSONData = function(url){
     });
 }
 
+function cerrarSesion(){
+  //pido confirmacion al usuario
+  let confirmacion = confirm('¿Estás seguro de que quieres cerrar sesión?');
+
+  if(confirmacion === true) {
+    localStorage.removeItem('email');
+    window.location.href="login.html";
+    alert('Debes ingresar nuevamente para navegar en el sitio');
+  }else {
+    alert('Tu sesión no se ha cerrado, puedes seguir navegando');
+  }
+}
+
 document.addEventListener('DOMContentLoaded', ()=>{
   
   let user = localStorage.getItem('email');
 
   //Se agrega al usuario en la barra
-  document.getElementById('user').innerHTML = `Hola ${user}`;
-  const imageUser = document.createElement('img');
-  imageUser.src = 'https://raw.githubusercontent.com/aguusfer/e-commerce.github.io/main/img/img_perfil.png';
-  //estilos de la imagen para que entre en la barra
-  imageUser.style.width = '55px';
-  imageUser.style.paddingLeft = '10%';
-  document.querySelector('#user').appendChild(imageUser);
+  //document.getElementById('user').innerHTML = `Hola ${user}`;
+  document.getElementById('user').innerHTML = `<div class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+    ${user}
+  </a>
 
-  //Boton para cerrar sesión
-  document.getElementById("cerrar").addEventListener('click', ()=> {
-    //pido confirmacion al usuario
-    let confirmacion = confirm('¿Estás seguro de que quieres cerrar sesión?');
-
-    if(confirmacion === true) {
-      localStorage.removeItem('email');
-      window.location.href="login.html";
-      alert('Debes ingresar nuevamente para navegar en el sitio');
-    }else {
-      alert('Tu sesión no se ha cerrado, puedes seguir navegando');
-    }
-  })
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+    <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+    <li class="dropdown-item" style="cursor: pointer" onclick="cerrarSesion()">Cerrar sesión</li>
+  </ul>
+</div>`;
+  // const imageUser = document.createElement('img');
+  // imageUser.src = 'https://raw.githubusercontent.com/aguusfer/e-commerce.github.io/main/img/img_perfil.png';
+  // //estilos de la imagen para que entre en la barra
+  // imageUser.style.width = '55px';
+  // imageUser.style.paddingLeft = '10%';
+  // document.querySelector('#user').appendChild(imageUser);
 })

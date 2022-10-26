@@ -19,6 +19,48 @@
     width: 30%;
     
   }
+
+  #form {
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+}
+
+#form p {
+  text-align: center;
+}
+
+#form label {
+  font-size: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+/* pintar con color al pasar por encima */
+label:hover,
+label:hover ~ label {
+  color: orange;
+}
+
+/* marcar todas las estrellas anteriores */
+input[type="radio"]:checked ~ label {
+  color: orange;
+}
+
+.derecha {
+  float: right;
+}
 </style>
 
 <body>
@@ -42,7 +84,6 @@
           <li class="nav-item">
             <a class="nav-link active" id="user"></a>
           </li>
-          <button id="cerrar">Cerrar sesión</button>
         </ul>
       </div>
     </div>
@@ -73,23 +114,26 @@
       <div id="imagenesAgregar" class="row mt-2 g-4">
         <!-- IMAGENES -->
     </div>
+    <br>
+    <br>
+
+    <!-- PRODUCTOS RELACIONADOS -->
+    <div class="container">
+      <div>
+        <h5 class="text-dark mb-0">Productos relacionados</h5>
+        <div id="productos-relacionados" class="row mt-2 g-4"></div>
+      </div>
+    </div>
+    <br>
 
         <!-- COMENTARIOS -->
-        
-        <section style="background-color: #f7f6f6;">
-          <div class="container my-5 py-5 text-dark">
-            <div class="row d-flex justify-content-center">
-              <div class="col-md-12 col-lg-10 col-xl-8">
-                <h4 class="text-dark mb-0">Comentarios</h4>
-                <div class="card-body p-2 d-flex align-items-center">
-                </div>
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                  <div id="comentariosAgregar" class="card mb-3"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+
+        <!-- PRUEBAAA -->
+        <h4 class="text-dark mb-0">Comentarios</h4>
+        <br>
+        <ul id="comentariosAgregar" class="list-group">
+        </ul>
+        <br>
 
         <!-- AGREGAR COMENTARIOS -->
         <section>
@@ -103,21 +147,29 @@
                         height="65" />
                       <div class="w-100">
                         <h5>Comentar</h5>
-                        <ul class="rating mb-3" data-mdb-toggle="rating">
-                            <i class="far fa-star fa-sm text-danger" title="Bad"></i>
-                            <i class="far fa-star fa-sm text-danger" title="Poor"></i>
-                            <i class="far fa-star fa-sm text-danger" title="OK"></i>
-                            <i class="far fa-star fa-sm text-danger" title="Good"></i>
-                            <i class="far fa-star fa-sm text-danger" title="Excellent"></i>
-                        </ul>
+                        <form>
+                          <p id="valor" class="clasificacion">
+                              <input id="radio1" type="radio" name="estrellas" value="5">
+                                <label id="1estrella" for="radio1" style="cursor: pointer;">★</label>
+                              <input id="radio2" type="radio" name="estrellas" value="4">
+                                <label id="2estrellas" for="radio2" style="cursor: pointer;">★</label>
+                              <input id="radio3" type="radio" name="estrellas" value="3">
+                                <label id="3estrellas" for="radio3" style="cursor: pointer;">★</label>
+                              <input id="radio4" type="radio" name="estrellas" value="2">
+                                <label id="4estrellas" for="radio4" style="cursor: pointer;">★</label>
+                              <input id="radio5" type="radio" name="estrellas" value="1">
+                            <label id="5estrellas" for="radio5" style="cursor: pointer;">★</label>
+                            <span class="text-muted">:noicacifilaC</span>
+                          </p>
+                        </form>
                         <div class="form-outline">
                           <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
-                          <label class="form-label" for="textAreaExample">Cuál es tu opinión?</label>
+                          <label id="texto" class="form-label" for="textAreaExample">Cuál es tu opinión?</label>
                         </div>
                         <div class="d-flex justify-content-between mt-3">
-                          <button type="button" class="btn btn-success">Danger</button>
-                          <button type="button" class="btn btn-danger">
-                            Send <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                          <button id="borrar" type="button" class="btn btn-danger">Borrar</button>
+                          <button id="enviarComentario" type="button" class="btn btn-success">
+                            Enviar <i class="fas fa-long-arrow-alt-right ms-1"></i>
                           </button>
                         </div>
                       </div>

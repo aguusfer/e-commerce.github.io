@@ -2,10 +2,10 @@ let urlCarrito = CART_INFO_URL + '25801' + EXT_TYPE;
 let arrayCarrito = [];
 
 function actualizarSubTotal(i, cantidad, subtotal){
-    // console.log(idCantidad);
+    let array =JSON.parse(localStorage.getItem('carrito'));
     let cantidadNueva = parseInt(cantidad.value);
-    let precio = parseInt(arrayCarrito[i].unitCost);
-    let moneda = arrayCarrito[i].currency;
+    let precio = parseInt(array[i].unitCost);
+    let moneda = array[i].currency;
     let total = cantidadNueva*precio;
     if(cantidadNueva >=0){
         subtotal.innerHTML = moneda + ' ' + total;
@@ -38,6 +38,7 @@ function mostrarEnCarrito(){
 
         let idCantidad = 'cantidad' + i;
         let idSubtotal = 'subtotal' + i;
+        console.log(idCantidad);
 
         contenidoParaAgregar += `
         <tr>

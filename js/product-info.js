@@ -4,30 +4,37 @@ console.log(URL);
 URLCOMMENTS = PRODUCT_INFO_COMMENTS_URL + id + EXT_TYPE;
 let puntajeComentarioAgregar = '';
 let commentsData= [];
+let productData = [];
 
-// function agregarAlCarrito(producto){
-//   let carrito = localStorage.getItem('carrito');
-//   let idProduct = producto.id;
-//   let nombre = producto.name;
-//   let costo = producto.cost;
-//   let moneda = producto.currency;
-//   let imagen = producto.images[0];
+function agregarAlCarrito(producto){
+  //si el elemento no fue agregado anteriormente al carrito
+  if(!localStorage.getItem('productosAgregadosAlCarrito').includes(producto.id)){
+    let carrito = JSON.parse(localStorage.getItem('carrito'));
+    let idProduct = producto.id;
+    let nombre = producto.name;
+    let costo = producto.cost;
+    let moneda = producto.currency;
+    let imagen = producto.images[0];
 
-//   let agregar = {
-//     id: idProduct,
-//     name: nombre,
-//     count: 1,
-//     unitCost: costo,
-//     currency: moneda,
-//     image: imagen
-//   }
-//   console.log(agregar);
+    let agregar = {
+      id: idProduct,
+      name: nombre,
+      count: 1,
+      unitCost: costo,
+      currency: moneda,
+      image: imagen
+    }
+    // console.log(agregar);
 
-//   let carritoNuevo = carrito.push(agregar);
-//   console.log(carritoNuevo);
-//   localStorage.setItem('carrito', carrito);
-//   window.location = "cart.html";
-// }
+    let carritoNuevo = carrito.push(agregar);
+    console.log(carritoNuevo);
+    console.log(carrito);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    window.location = "cart.html";
+  }else{
+    alert('Ese producto ya está ingresado en el carrito');
+  }
+}
 
 function moverARelacionado(idRelacionado){
   localStorage.setItem("id", idRelacionado);
@@ -71,14 +78,14 @@ function mostrarProducto(producto){
     }
     contenidoParaAgregar = 
     `<div class="text-center p-4">
-    <h1>${producto.name} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button type="button" class="btn btn-success">Comprar</button></h1>
+    <h1>${producto.name}</h1>
   </div>
     <div class="d-flex justify-content-center mt-3"> <span class="text text-center"><b>Descripción:</b> ${producto.description}</span> </div>
     <div class="d-flex justify-content-center mt-3"> <span class="text text-center"><b>Costo:</b> ${producto.cost} ${producto.currency}</span> </div>
     <div class="d-flex justify-content-center mt-3"> <span class="text text-center"><b>Cantidad vendida:</b> ${producto.soldCount}</span> </div>`
 
     document.getElementById('imagenesAgregar').innerHTML = imagenes;
-    document.getElementById('product-info').innerHTML = contenidoParaAgregar;
+    document.getElementById('product-info').innerHTML += contenidoParaAgregar;
 }
 
 function ponerEstrellas(score){
@@ -87,7 +94,6 @@ function ponerEstrellas(score){
     for(let i=1; i<=score; i++) {
         estrellas += `<span class="fa fa-star checked"></span>`;
     }
-    console.log(estrellas);
     return estrellas;
     
 }
@@ -98,22 +104,12 @@ function mostrarComentarios(comentarios){
      let description;
      let user;
      let date;
-    console.log(comentarios.length);
-    console.log(comentarios[comentarios.length-1]);
-    console.log(comentarios[comentarios.length-1].score);
-    console.log(comentarios[comentarios.length-1].description);
-    console.log(comentarios[comentarios.length-1].user);
-    console.log(comentarios[comentarios.length-1].date);
 
     for (let i=0; i<comentarios.length; i++){
         score = comentarios[i].score;
         description = comentarios[i].description;
         user = comentarios[i].user;
         date = comentarios[i].dateTime;
-        // console.log(score);
-        // console.log(description);
-        // console.log(user);
-        // console.log(date);
         comentariosParaAgregar += `
         <li class="list-group-item">
           <div>
@@ -149,7 +145,6 @@ function mostrarComentarios(comentarios){
 
 function agregarComentario(puntaje, contenido){
   let usuario = localStorage.getItem('email');
-  console.log(usuario);
   let hoy = new Date;
   let idProduct = localStorage.getItem('id');
   let fecha = hoy.getFullYear() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getDate() + ' ' +  hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
@@ -160,14 +155,8 @@ function agregarComentario(puntaje, contenido){
     user: usuario,
     dateTime: fecha
   }
-  console.log(comentario.product);
-  console.log(comentario.dateTime);
   let nuevosComentarios = commentsData.push(comentario);
-  console.log(commentsData.length);
   console.log(nuevosComentarios.length);
-  // console.log(nuevosComentarios);
-  // console.log(comentario);
-  // console.log(commentsData);
   mostrarComentarios(commentsData);
 }
 
@@ -176,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function(){
     getJSONData(URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             //json con la info del producto
-            let productData = resultObj.data;
+            productData = resultObj.data;
             //arreglo con todos los productos de la categoría
             mostrarProducto(productData);
             mostrarRelacionados(productData);
@@ -216,5 +205,9 @@ document.addEventListener("DOMContentLoaded", function(){
       }else{
         alert('Debes ingresar el puntaje');
       }
-    })
+    });
+
+    document.getElementById('comprarBtn').addEventListener('click', ()=>{
+      agregarAlCarrito(productData);
+    });
 });

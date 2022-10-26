@@ -16,8 +16,8 @@ function actualizarSubTotal(i, cantidad, subtotal){
     }
 }
 
-function mostrarEnCarrito(compras){
-    // let compras = localStorage.getItem('carrito');
+function mostrarEnCarrito(){
+    let compras = JSON.parse(localStorage.getItem('carrito'));
     let contenidoParaAgregar = '';
     let nombre;
     let precio;
@@ -25,6 +25,7 @@ function mostrarEnCarrito(compras){
     let costo;
     let imagen;
     let cantidad;
+    let productosAgregados = [];
 
     for (let i=0; i<compras.length; i++){
         nombre = compras[i].name;
@@ -33,6 +34,7 @@ function mostrarEnCarrito(compras){
         costo = moneda + ' ' + precio;
         imagen = compras[i].image;
         cantidad = compras[i].count;
+        productosAgregados.push(compras[i].id);
 
         let idCantidad = 'cantidad' + i;
         let idSubtotal = 'subtotal' + i;
@@ -48,6 +50,7 @@ function mostrarEnCarrito(compras){
         `;
     }
     
+    localStorage.setItem('productosAgregadosAlCarrito', productosAgregados);
     document.getElementById('carrito').innerHTML = contenidoParaAgregar;
     
 };
@@ -59,8 +62,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if (resultObj.status === 'ok') {
             let carrito = resultObj.data;
             arrayCarrito = carrito.articles;
-            mostrarEnCarrito(arrayCarrito);
-            localStorage.setItem("carrito", JSON.stringify(arrayCarrito));
+            //si todavia no agregamos nada al carrito
+            if(localStorage.getItem('carrito')==null){
+                localStorage.setItem("carrito", JSON.stringify(arrayCarrito));
+            }
+            localStorage.removeItem('productosAgregadosAlCarrito');
+            mostrarEnCarrito();
         }
       })
 

@@ -9,6 +9,10 @@
   font-weight: bold;
 }
 
+.error{
+  color: red;
+}
+
 nav a {
   text-decoration: none;
 }

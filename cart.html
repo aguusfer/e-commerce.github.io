@@ -1,132 +1,331 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>eMercado - Todo lo que busques está aquí</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
+      rel="stylesheet"
+    />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+  </head>
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" id="user"></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <main>
-    <div class="p-4">
-      <h2 class="text-center">Carrito de compras</h2>
-    </div>
-
-    <!-- aca va la lista de elementos a comprar -->
-    <div class="container">
-      <p class="lead text-left">Artículos a comprar</p>
-      <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Costo</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Subtotal</th>
-          </tr>
-        </thead>
-        <tbody id="carrito">
-          <ul class="list-group">
-
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100 justify-content-between">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="categories.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sell.html">Vender</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" id="user"></a>
+            </li>
           </ul>
-        </tbody>
-      </table>
-    </div>
-    <hr>
-    </div>
-
-    <br>
-
-    <!-- tipo de envio -->
-    <div class="container">
-      <p class="lead text-left">Tipo de envío</p>
-      <div>
-        <div>
-          <input type="radio" id="premium" name="envio" value="premium" checked>
-          <label for="premium">Premium 2 a 5 días (15%)</label>
-        </div>
-        <div>
-          <input type="radio" id="express" name="envio" value="express">
-          <label for="express">Express 5 a 8 días (7%)</label>
-        </div>
-        <div>
-          <input type="radio" id="standard" name="envio" value="standard">
-          <label for="standard">Standard 12 a 15 días (5%)</label>
         </div>
       </div>
-      <br>
-      <p class="lead text-left">Dirección de envío</p>
-      <div>
-        <div class="row">
-          <label for="calle" class="form-label">Calle</label>
-          <div class="col-6">
-            <input class="form-control" type="text" name="calle" id="calle">
-          </div>
-          <label for="numeroPuerta" class="form-label">Número</label>
-          <div class="col-4">
-            <input class="form-control" type="text" name="numeroPuerta" id="numeroPuerta">
-          </div>
-          <label for="esquina" class="form-label">Esquina</label>
-          <div class="col-6">
-            <input class="form-control" type="text" name="esquina" id="esquina">
-          </div>
-        </div>
+    </nav>
+    <main>
+      <div class="p-4">
+        <p class="text-center fs-1">Carrito de compras</p>
       </div>
-      <hr>
-    </div>
-    
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
-        2022</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
-</body>
 
+      <!-- aca va la lista de elementos a comprar -->
+      <div class="container">
+        <p class="lead text-left fs-3">Artículos a comprar</p>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Costo</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody id="carrito">
+              <ul class="list-group"></ul>
+            </tbody>
+          </table>
+        </div>
+        <hr />
+      </div>
+
+      <br />
+      <div class="container">
+        <form class="row g-3 needs-validation" novalidate>
+          <!-- tipo de envio -->
+          <div class="container">
+            <p class="lead text-left fs-3">Tipo de envío</p>
+            <div>
+              <div>
+                <input
+                  type="radio"
+                  id="premium"
+                  name="envio"
+                  value="premium"
+                  checked
+                />
+                <label for="premium">Premium 2 a 5 días (15%)</label>
+              </div>
+              <div>
+                <input type="radio" id="express" name="envio" value="express" />
+                <label for="express">Express 5 a 8 días (7%)</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="standard"
+                  name="envio"
+                  value="standard"
+                />
+                <label for="standard">Standard 12 a 15 días (5%)</label>
+              </div>
+            </div>
+            <br />
+            <p class="lead text-left fs-3">Dirección de envío</p>
+            <div>
+              <div class="row">
+                <label for="calle" class="form-label">Calle</label>
+                <div class="col-6">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="calle"
+                    id="calle"
+                    required
+                  />
+                  <div class="invalid-feedback">Debe ingresar una calle.</div>
+                </div>
+                <label for="numeroPuerta" class="form-label">Número</label>
+                <div class="col-4">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="numeroPuerta"
+                    id="numeroPuerta"
+                    required
+                  />
+                  <div class="invalid-feedback">Debe ingresar un número.</div>
+                </div>
+                <label for="esquina" class="form-label">Esquina</label>
+                <div class="col-6">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="esquina"
+                    id="esquina"
+                    required
+                  />
+                  <div class="invalid-feedback">Debe ingresar una esquina.</div>
+                </div>
+              </div>
+            </div>
+            <hr />
+          </div>
+
+          <br />
+
+          <div class="container">
+            <p class="lead text-left fs-3">Costos</p>
+            <ul class="list-group">
+              <li class="list-group-item list-group-item-light">
+                <div class="col">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Subtotal</h5>
+                    <p id="costo-subtotal" class="text-muted"></p>
+                  </div>
+                  <p class="mb-1 text-muted">
+                    Costo unitario del producto por cantidad
+                  </p>
+                </div>
+              </li>
+              <li class="list-group-item list-group-item-light">
+                <div class="col">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Costo de envío</h5>
+                    <p id="costo-envio" class="text-muted"></p>
+                  </div>
+                  <p class="mb-1 text-muted">Según el tipo de envío</p>
+                </div>
+              </li>
+              <li class="list-group-item list-group-item-secondary">
+                <div class="col">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Total ($)</h5>
+                    <p id="costo-total" class="fw-bold"></p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <hr />
+          </div>
+
+          <br />
+
+          <div class="container">
+            <p class="lead text-left fs-3">Forma de pago</p>
+            <p id="forma-pago">No ha seleccionado</p>
+            <a
+              href="#"
+              class="pe-auto text-right"
+              data-bs-toggle="modal"
+              data-bs-target="#formaDePagoModal"
+              >Seleccionar</a
+            >
+            <span id="mensajeFormaDePago" class="error"></span>
+          </div>
+
+          <div
+            class="modal fade"
+            id="formaDePagoModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Forma de pago
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <!-- TARJETA DE CREDITO -->
+                  <input
+                    type="radio"
+                    id="credito"
+                    name="pago"
+                    value="credito"
+                    checked
+                  />
+                  <label for="credito">Tarjeta de crédito</label>
+                  <hr />
+                  <div class="row g-3">
+                    <div class="col-sm-6">
+                      <label for="numTarjeta" class="form-label"
+                        >Numero de tarjeta</label
+                      >
+                      <input required
+                       type="text" class="form-control" id="numTarjeta" />
+                    </div>
+
+                    <div class="col-sm-4">
+                      <label for="codigoSeg" class="form-label"
+                        >Código de seg.</label
+                      >
+                      <input required type="text" class="form-control" id="codigoSeg" />
+                    </div>
+
+                    <div class="col-sm-6">
+                      <label for="vencimiento" class="form-label"
+                        >Vencimiento (MM/AA)
+                      </label>
+                      <input required
+                        type="text"
+                        class="form-control"
+                        id="vencimiento"
+                      />
+                    </div>
+                  </div>
+                  <br />
+
+                  <!-- TRANSFERENCIA BANCARIA -->
+                  <input
+                    type="radio"
+                    id="transferencia"
+                    name="pago"
+                    required
+                    value="transferencia"
+                  />
+                  <label for="transferencia">Transferencia bancaria</label>
+                  <hr />
+                  <div class="row g-3">
+                    <div class="col-sm-6">
+                      <label for="numCuenta" class="form-label"
+                        >Numero de cuenta</label
+                      >
+                      <input required type="text" class="form-control" id="numCuenta" />
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br />
+
+          <!-- BOTON PARA FINALIZAR COMPRA -->
+          <div class="container">
+            <div class="d-grid gap-2">
+              <button class="btn btn-outline-primary" type="submit">
+                Finalizar compra
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-end">
+          <a href="#">Volver arriba</a>
+        </p>
+        <p>
+          Este sitio forma parte de
+          <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+            >Jovenes a Programar</a
+          >
+          - 2022
+        </p>
+        <p>
+          Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la
+          letra del obligatorio.
+        </p>
+      </div>
+    </footer>
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/cart.js"></script>
+  </body>
 </html>

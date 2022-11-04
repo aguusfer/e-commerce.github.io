@@ -46,6 +46,13 @@ function cerrarSesion(){
 
   if(confirmacion === true) {
     localStorage.removeItem('email');
+    localStorage.removeItem('carrito');
+    localStorage.removeItem('catId');
+    localStorage.removeItem('subtotal');
+    localStorage.removeItem('id');
+    localStorage.removeItem('costoEnvio');
+    localStorage.removeItem('productosAgregadosAlCarrito');
+    localStorage.removeItem('tipoDeEnvio');
     window.location.href="login.html";
     alert('Debes ingresar nuevamente para navegar en el sitio');
   }else {

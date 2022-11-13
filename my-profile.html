@@ -53,10 +53,66 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="text-center p-4">
+        <h2>Perfil</h2>
       </div>
+      <br>
+      <hr>
     </div>
+
+    <!-- FORMULARIO DE PERFIL -->
+    
+    <div class="container">
+      <br>
+      <form class="row g-3 needs-validation" novalidate>
+        <div class="col-md-6">
+          <label for="nombre" class="form-label">Primer nombre*</label>
+          <input type="text" class="form-control" id="nombre" required>
+          <div class="invalid-feedback">
+            Este campo es obligatorio
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="segundoNombre" class="form-label">Segundo nombre</label>
+          <input type="text" class="form-control" id="segundoNombre">
+        </div>
+        <div class="col-md-6">
+          <label for="apellido" class="form-label">Primer apellido*</label>
+          <input type="text" class="form-control" id="apellido" required>
+          <div class="invalid-feedback">
+            Este campo es obligatorio
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="segundoApellido" class="form-label">Segundo apellido</label>
+          <input type="text" class="form-control" id="segundoApellido">
+        </div>
+        <div class="col-md-6">
+          <label for="emailPerfil" class="form-label">E-mail*</label>
+          <input type="text" class="form-control" id="emailPerfil" required>
+          <div class="invalid-feedback">
+            Este campo es obligatorio
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="telefono" class="form-label">Teléfono de contacto</label>
+          <input type="tel" class="form-control" id="telefono" pattern="[0-9]{8,9}">
+          <div class="invalid-feedback">
+            Ingresa un teléfono válido
+          </div>
+        </div>
+        
+        <div class="col-12">
+          <br>
+          <br>
+          <br>
+          <hr>
+          <button class="btn btn-primary" type="submit">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- FIN FORMULARIO DE PERFIL -->
   </main>
   <footer class="text-muted">
     <div class="container">

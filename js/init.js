@@ -53,6 +53,11 @@ function cerrarSesion(){
     localStorage.removeItem('costoEnvio');
     localStorage.removeItem('productosAgregadosAlCarrito');
     localStorage.removeItem('tipoDeEnvio');
+    localStorage.removeItem('nombre');
+    localStorage.removeItem('nombre2');
+    localStorage.removeItem('apellido');
+    localStorage.removeItem('apellido2');
+    localStorage.removeItem('telefono');
     window.location.href="login.html";
     alert('Debes ingresar nuevamente para navegar en el sitio');
   }else {
